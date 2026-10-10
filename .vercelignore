@@ -1,0 +1,14 @@
+node_modules
+dist
+.git
+*.tsbuildinfo
+*.local
+abordagem.txt
+avaliacoes.json
+contato.json
+servicos.json
+frames_web
+logo.png
+logo-semfundo.png
+frames.html
+index-old.html

@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Hanken+Grotesk:wght@400..700&family=Martian+Mono:wght@300..600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 38 35.5% 93.9%;
+    --foreground: 213 9.7% 18.2%;
+
+    --card: 39 32.1% 89.6%;
+    --card-foreground: 213 9.7% 18.2%;
+
+    --popover: 39 32.1% 89.6%;
+    --popover-foreground: 213 9.7% 18.2%;
+
+    --primary: 213 9.7% 18.2%;
+    --primary-foreground: 38 35.5% 93.9%;
+
+    --secondary: 39 32.1% 89.6%;
+    --secondary-foreground: 213 9.7% 18.2%;
+
+    --muted: 39 24% 86%;
+    --muted-foreground: 213 8% 38%;
+
+    --accent: 40 72.7% 55.5%;
+    --accent-foreground: 213 9.7% 18.2%;
+
+    --border: 39 18% 79%;
+    --input: 39 18% 79%;
+    --ring: 40 72.7% 55.5%;
+
+    --success: 145 42% 34%;
+    --success-foreground: 38 35.5% 93.9%;
+    --warning: 28 72% 40%;
+    --warning-foreground: 38 35.5% 93.9%;
+    --destructive: 2 62% 45%;
+    --destructive-foreground: 38 35.5% 93.9%;
+    --info: 205 45% 38%;
+    --info-foreground: 38 35.5% 93.9%;
+
+    --madeira: 30 37.8% 50.2%;
+    --madeira-forte: 31 44.3% 38%;
+    --couro: 0 0% 10.2%;
+    --deep: 213 9.7% 18.2%;
+
+    --radius-card: 4px;
+    --radius-modal: 14px;
+
+    --ease-entering: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-exiting: cubic-bezier(0.4, 0, 1, 1);
+    --ease-general: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  * { border-color: hsl(var(--border)); }
+
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3 { font-family: 'Fraunces', ui-serif, Georgia, serif; }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--accent));
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+@layer components {
+  .font-data { font-family: 'Martian Mono', ui-monospace, monospace; font-variant-numeric: tabular-nums; }
+  .measure { max-width: 68ch; }
+
+  .hero-veil {
+    background:
+      linear-gradient(100deg, hsl(var(--couro) / 0.82) 0%, hsl(var(--couro) / 0.46) 42%, hsl(var(--couro) / 0.1) 72%),
+      linear-gradient(180deg, hsl(var(--couro) / 0.62) 0%, hsl(var(--couro) / 0.06) 26%, hsl(var(--couro) / 0.34) 58%, hsl(var(--couro) / 0.88) 100%);
+  }
+
+  .rule-madeira { background-color: hsl(var(--madeira)); opacity: 0.55; }
+}
+
+@layer utilities {
+  .grain::after {
+    content: '';
+    position: absolute; inset: 0;
+    pointer-events: none;
+    opacity: 0.16;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
