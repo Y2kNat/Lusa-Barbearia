@@ -37,15 +37,14 @@ export function SiteHeader() {
     const primeiro = !montado.current
     montado.current = true
 
-    if (primeiro) {
-      gsap.set(painel, { clearProps: 'all', display: aberto ? 'block' : 'none' })
-      gsap.set(itens, { clearProps: 'all' })
-      return
-    }
+    // clearProps:'all' removeria o display definido na mesma chamada, entao
+    // aqui so limpamos o que o GSAP controla e o display vem sempre junto
+    const aplicarDisplay = () => gsap.set(painel, { display: aberto ? 'block' : 'none' })
 
-    if (reduzir) {
-      gsap.set(painel, { clearProps: 'all', display: aberto ? 'block' : 'none' })
-      gsap.set(itens, { clearProps: 'all' })
+    if (primeiro || reduzir) {
+      gsap.set(painel, { clearProps: 'opacity,height,transform' })
+      aplicarDisplay()
+      gsap.set(itens, { clearProps: 'opacity,transform' })
       return
     }
 
@@ -182,8 +181,8 @@ export function SiteHeader() {
       <div
         id="menu-mobile"
         ref={painelRef}
-        style={{ display: 'none' }}
-        className="overflow-hidden border-t border-primary-foreground/10 bg-deep lg:hidden"
+        data-aberto={aberto}
+        className="overflow-hidden border-t border-primary-foreground/10 bg-deep data-[aberto=false]:hidden lg:hidden"
       >
         <nav aria-label="Seções" className="container flex flex-col py-2">
           {LINKS.map((l) => (
